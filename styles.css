@@ -1,0 +1,286 @@
+/* Bořislavský spolek — borislavskyspolek.cz
+   Barvy, písmo a tvarosloví podle vizuální identity spolku (print colourway).
+   Mobile-first, žádný framework. */
+
+@font-face{
+  font-family:"Space Grotesk";
+  src:url("assets/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight:300 700;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+  --pink:#F8C8DF;
+  --violet:#524E9C;
+  --violet-hover:#464285;
+  --violet-active:#3A376F;
+  --white:#FFFFFF;
+
+  --stroke:2px;
+  --radius-frame:14px;
+  --radius-pill:999px;
+
+  --page:1120px;
+  --gutter:clamp(20px,5vw,48px);
+  --band:clamp(44px,8vw,88px);
+
+  --dur:140ms;
+  --ease:cubic-bezier(.2,0,.2,1);
+
+  --font:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
+
+body{
+  margin:0;
+  background:var(--pink);
+  color:var(--violet);
+  font-family:var(--font);
+  font-weight:400;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;height:auto;display:block}
+p{margin:0;text-wrap:pretty}
+strong{font-weight:700}
+
+a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px;transition:opacity var(--dur) var(--ease)}
+a:hover{opacity:.72}
+
+:focus-visible{outline:3px solid currentColor;outline-offset:2px}
+
+section[id]{scroll-margin-top:84px}
+
+.page{max-width:var(--page);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:60;
+  background:var(--violet);color:var(--white);
+  padding:12px 20px;border-radius:0 0 var(--radius-frame) 0;
+  font-weight:500;text-decoration:none;
+}
+.skip:focus{left:0}
+
+/* ---------- Hlavička ---------- */
+
+.header{
+  position:sticky;top:0;z-index:30;
+  background:var(--pink);
+  border-bottom:var(--stroke) solid var(--violet);
+}
+.header__bar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-top:12px;padding-bottom:12px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.brand__mark{width:44px;height:44px}
+.brand__name{font-weight:500;font-size:clamp(1rem,3.6vw,1.125rem);letter-spacing:-.012em;white-space:nowrap}
+
+.nav a{text-decoration:none;font-weight:500}
+
+.nav--desktop{display:none;align-items:center;gap:28px}
+.nav--desktop a{font-size:1.0625rem;padding:10px 2px}
+
+.nav--mobile{display:flex;flex-direction:column;border-top:var(--stroke) solid var(--violet);background:var(--pink)}
+.nav--mobile a{
+  display:flex;align-items:center;min-height:64px;
+  padding:18px var(--gutter);
+  font-size:1.375rem;
+  border-bottom:var(--stroke) solid var(--violet);
+}
+.nav--mobile a:last-child{border-bottom:0}
+.nav--mobile[hidden]{display:none}
+
+.menu-toggle{
+  font-family:var(--font);font-weight:500;font-size:1rem;line-height:1;
+  color:var(--violet);background:transparent;
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-pill);
+  padding:14px 22px;min-height:48px;cursor:pointer;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.menu-toggle:hover{background:var(--violet);color:var(--white)}
+.menu-toggle:active{transform:scale(.98)}
+
+@media (min-width:761px){
+  .nav--desktop{display:flex}
+  .menu-toggle{display:none}
+  .nav--mobile{display:none !important}
+}
+
+/* ---------- Kapsle, tlačítka, tagy ---------- */
+
+.capsule{
+  display:inline-flex;align-items:center;
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-pill);
+  background:var(--violet);color:var(--white);
+  font-weight:500;font-size:clamp(.9375rem,2.8vw,1.125rem);line-height:1.15;
+  overflow:hidden;
+}
+.capsule__a{padding:9px 16px;white-space:nowrap}
+.capsule__b{
+  padding:9px 16px;white-space:nowrap;margin:calc(var(--stroke) * -1);
+  background:var(--pink);color:var(--violet);border-radius:var(--radius-pill);
+}
+.band--white .capsule__b{background:var(--white)}
+
+.capsule--link{
+  text-decoration:none;margin-top:clamp(22px,4vw,32px);min-height:48px;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.capsule--link .capsule__a,
+.capsule--link .capsule__b{padding:13px 18px}
+.capsule--link:hover{opacity:1;background:var(--violet-hover);border-color:var(--violet-hover)}
+.capsule--link:active{background:var(--violet-active);border-color:var(--violet-active)}
+
+.tag{
+  display:inline-flex;align-items:center;
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-pill);
+  padding:9px 16px;font-weight:500;font-size:clamp(.9375rem,2.8vw,1.125rem);line-height:1.15;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;min-height:52px;padding:15px 28px;
+  background:var(--violet);color:var(--white);
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-pill);
+  font-weight:500;font-size:clamp(1rem,3vw,1.125rem);line-height:1.1;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.btn:hover{opacity:1;background:var(--violet-hover);border-color:var(--violet-hover)}
+.btn:active{background:var(--violet-active);border-color:var(--violet-active);transform:scale(.98)}
+
+/* ---------- Sekce ---------- */
+
+.band{padding:var(--band) 0}
+.band--white{background:var(--white);border-bottom:var(--stroke) solid var(--violet)}
+.band--white#novinky{border-top:var(--stroke) solid var(--violet)}
+.band--top{border-top:var(--stroke) solid var(--violet);border-bottom:0}
+
+h1{
+  margin:0;font-weight:700;
+  font-size:clamp(2.25rem,7.2vw,4rem);
+  letter-spacing:-.022em;line-height:1.02;
+}
+h2{
+  margin:0 0 clamp(24px,4vw,40px);font-weight:700;
+  font-size:clamp(1.75rem,5.4vw,3rem);
+  letter-spacing:-.022em;line-height:1.05;
+}
+h3{
+  margin:0;font-weight:700;
+  font-size:clamp(1.875rem,6.4vw,3.25rem);
+  letter-spacing:-.022em;line-height:1.02;
+}
+.lead{
+  margin:clamp(18px,3vw,26px) 0 0;
+  font-size:clamp(1.125rem,3.4vw,1.5rem);
+  font-weight:500;line-height:1.3;max-width:26ch;
+}
+
+/* ---------- Hero ---------- */
+
+.hero{padding:clamp(44px,9vw,88px) 0 clamp(40px,7vw,72px)}
+.hero__grid{
+  display:grid;gap:clamp(28px,5vw,48px);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  align-items:center;
+}
+.hero__mark{width:clamp(160px,34vw,300px);height:auto;justify-self:end}
+
+/* ---------- Pozvánka ---------- */
+
+.event{
+  border:var(--stroke) solid var(--violet);
+  border-radius:var(--radius-frame);
+  overflow:hidden;background:var(--white);
+}
+.event + .event{margin-top:clamp(20px,3.5vw,32px)}
+.event__poster{width:100%;border-bottom:var(--stroke) solid var(--violet)}
+.event__body{padding:clamp(24px,5vw,48px)}
+
+.facts{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:clamp(18px,3vw,26px)}
+
+.prose{
+  margin-top:clamp(24px,4vw,36px);
+  font-size:clamp(1.0625rem,3.2vw,1.375rem);
+  font-weight:500;line-height:1.38;max-width:34ch;
+}
+.prose p + p{margin-top:1.1em}
+.prose--body{
+  margin-top:0;font-size:clamp(1.0625rem,3vw,1.1875rem);
+  font-weight:400;line-height:1.45;max-width:46ch;
+}
+.prose--body p + p{margin-top:1.1em}
+
+.stair span{display:block}
+.stair .i1{padding-left:1.2em}
+.stair .i2{padding-left:2.4em}
+.stair .i3{padding-left:3.6em}
+
+.event__body .btn{margin-top:clamp(26px,4vw,36px)}
+
+.empty{
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-frame);
+  padding:clamp(28px,6vw,56px);
+  display:grid;gap:clamp(20px,4vw,32px);
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  align-items:center;
+}
+.empty__text{font-size:clamp(1.25rem,4.2vw,1.75rem);font-weight:500;line-height:1.3;max-width:24ch}
+.empty .btn{margin-top:clamp(20px,3vw,28px)}
+.empty__img{width:100%;max-width:220px;justify-self:end}
+
+/* ---------- O nás ---------- */
+
+.about{
+  display:grid;gap:clamp(28px,5vw,56px);
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  align-items:start;
+}
+.photo{margin:0}
+.photo img{width:100%;border:var(--stroke) solid var(--violet);border-radius:var(--radius-frame)}
+.photo figcaption{margin-top:12px;font-size:.875rem;line-height:1.4;letter-spacing:.02em}
+
+/* ---------- Kontakty ---------- */
+
+.cards{
+  display:grid;gap:clamp(16px,3vw,24px);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.card{
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-frame);
+  padding:clamp(20px,3.5vw,28px);
+  display:flex;flex-direction:column;gap:10px;
+}
+.card__label{font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.card a{
+  font-size:clamp(1rem,3.1vw,1.1875rem);font-weight:500;line-height:1.3;
+  word-break:break-word;text-decoration-line:underline;
+}
+
+/* ---------- Patička ---------- */
+
+.footer{
+  background:var(--violet);color:var(--white);
+  padding:clamp(36px,6vw,64px) 0;
+}
+.footer__grid{
+  display:grid;gap:clamp(24px,4vw,48px);
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  align-items:start;
+}
+.footer__mark{width:96px;height:96px}
+.footer__col{display:flex;flex-direction:column;gap:6px;font-size:.9375rem;line-height:1.45}
+.footer__strong{font-weight:500}
+.footer__quiet{opacity:.85;max-width:40ch}
+.footer__col a{text-decoration-line:underline}
