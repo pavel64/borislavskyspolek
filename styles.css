@@ -239,6 +239,14 @@ h3{
 .program b{font-weight:700;font-variant-numeric:tabular-nums}
 .program + h4{margin-top:1.8em}
 
+/* Video (YouTube embed) */
+.video{
+  aspect-ratio:16/9;overflow:hidden;
+  border:var(--stroke) solid var(--violet);border-radius:var(--radius-frame);
+  background:var(--violet);
+}
+.video iframe{display:block;width:100%;height:100%;border:0}
+
 .stair span{display:block}
 .stair .i1{padding-left:1.2em}
 .stair .i2{padding-left:2.4em}
