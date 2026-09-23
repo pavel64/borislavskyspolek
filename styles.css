@@ -162,9 +162,8 @@ section[id]{scroll-margin-top:84px}
 /* ---------- Sekce ---------- */
 
 .band{padding:var(--band) 0}
-.band--white{background:var(--white);border-bottom:var(--stroke) solid var(--violet)}
-.band--white#novinky{border-top:var(--stroke) solid var(--violet)}
-.band--top{border-top:var(--stroke) solid var(--violet);border-bottom:0}
+/* Sekce se střídají: růžová (výchozí) a bílá s linkou nahoře i dole. */
+.band--white{background:var(--white);border-block:var(--stroke) solid var(--violet)}
 
 h1{
   margin:0;font-weight:700;
@@ -238,6 +237,41 @@ h3{
 .program li:first-child{border-top:1px solid color-mix(in srgb,var(--violet) 25%,transparent)}
 .program b{font-weight:700;font-variant-numeric:tabular-nums}
 .program + h4{margin-top:1.8em}
+.program--ranges li{grid-template-columns:11.5ch 1fr}
+@media (max-width:420px){
+  .program--ranges li{grid-template-columns:1fr}
+}
+
+/* Obyčejný odrážkový seznam v textu */
+.list{margin:0;padding-left:1.2em}
+.list li + li{margin-top:.4em}
+.list + h4{margin-top:1.8em}
+
+/* Proběhlé akce: harmonika (nativní <details>) */
+.archive__toggle{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  list-style:none;cursor:pointer;min-height:48px;
+}
+.archive__toggle::-webkit-details-marker{display:none}
+.archive__toggle h2{margin:0}
+.archive__toggle::after{
+  content:"";flex:none;width:.7em;height:.7em;margin-right:.3em;
+  border-right:3px solid currentColor;border-bottom:3px solid currentColor;
+  transform:translateY(-25%) rotate(45deg);
+  transition:transform var(--dur) var(--ease);
+}
+.archive[open] .archive__toggle::after{transform:translateY(25%) rotate(-135deg)}
+.archive__toggle:hover h2{opacity:.72}
+.archive__list{margin-top:clamp(24px,4vw,40px)}
+
+/* Proběhlá akce: zkrácená karta, na širokém displeji obrázek vlevo */
+.event--past h3{font-size:clamp(1.5rem,4.6vw,2.25rem)}
+.event--past .prose--body{margin-top:clamp(18px,3vw,24px)}
+@media (min-width:761px){
+  .event--past{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+  .event--past .event__poster{align-self:center;border-bottom:0}
+  .event--past .event__body{padding:clamp(24px,3.5vw,40px);border-left:var(--stroke) solid var(--violet)}
+}
 
 /* Video (YouTube embed) */
 .video{
@@ -253,6 +287,10 @@ h3{
 .stair .i3{padding-left:3.6em}
 
 .event__body .btn{margin-top:clamp(26px,4vw,36px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(26px,4vw,36px)}
+.actions .btn{margin-top:0}
+.btn--ghost{background:transparent;color:var(--violet)}
+.btn--ghost:hover{background:var(--violet);color:var(--white)}
 
 .empty{
   border:var(--stroke) solid var(--violet);border-radius:var(--radius-frame);
