@@ -52,7 +52,7 @@ Smaž `<article class="event">` a odkomentuj blok **PRÁZDNÝ STAV** hned pod n�
 
 Fotografie ukládej jako WebP, dlouhá strana max 1400 px, kvalita ~0,6–0,8. Cíl je do ~200 kB na první načtení bez fotografií; stránka bez pozvánkové grafiky se do toho vejde.
 
-OG obrázek (1200 × 628, JPEG, teď `assets/img/og-dusickovy-pruvod-2026.jpg`) se ukazuje při sdílení na Facebooku. Při nové akci ho vyměň za grafiku té akce **pod novým názvem souboru** — `/assets/*` má roční neměnnou cache, takže přepsaný soubor se stejným jménem by se prohlížečům ani Facebooku neobnovil. Pak v `index.html` uprav `og:image`, `og:image:alt`, `og:title` a `og:description`.
+OG obrázek (1200 × 628, JPEG, teď `assets/img/og-dusickovy-pruvod-2026-plakat.jpg`) se ukazuje při sdílení na Facebooku. Při nové akci ho vyměň za grafiku té akce **pod novým názvem souboru** — `/assets/*` má roční neměnnou cache, takže přepsaný soubor se stejným jménem by se prohlížečům ani Facebooku neobnovil. Pak v `index.html` uprav `og:image`, `og:image:alt`, `og:title` a `og:description`.
 
 ## Barvy
 
